@@ -1,0 +1,73 @@
+#!/sbin/sh
+
+. "$env"
+
+print "Installing ramdisk..."
+
+cd $tmp/ramdisk
+
+rm -f init.rc
+cp $tmp/ramdiskres/init.rc ./
+chmod 0755 init.rc
+
+rm -f init.usb.configfs.rc
+cp $tmp/ramdiskres/init.usb.configfs.rc ./
+chmod 0755 init.usb.configfs.rc
+
+rm -f init.usb.rc
+cp $tmp/ramdiskres/init.usb.rc ./
+chmod 0755 init.usb.rc
+
+rm -f init.zygote32.rc
+cp $tmp/ramdiskres/init.zygote32.rc ./
+chmod 0755 init.zygote32.rc
+
+rm -f init.zygote32_64.rc
+cp $tmp/ramdiskres/init.zygote32_64.rc ./
+chmod 0755 init.zygote32_64.rc
+
+rm -f init.zygote64_32.rc
+cp $tmp/ramdiskres/init.zygote64_32.rc ./
+chmod 0755 init.zygote64_32.rc
+
+rm -f ueventd.rc
+cp $tmp/ramdiskres/ueventd.rc ./
+chmod 0755 ueventd.rc
+
+print "Done patching ramdisk"
+
+################################# END ############################
+
+print "Installing vendor..."
+
+setperm() {
+	find "$3" -type d -exec chmod "$1" {} \;
+	find "$3" -type f -exec chmod "$2" {} \;
+}
+#setperm pdir pfile DIR
+print "Installing vendor..."
+
+mount /vendor
+
+cp -r $tmp/vendor/app /vendor/
+setperm 0755 0644 /vendor/app
+
+cp -r $tmp/vendor/bin /vendor/
+setperm 0755 0755 /vendor/bin
+
+cp -r $tmp/vendor/etc /vendor/
+setperm 0755 0644 /vendor/etc
+
+cp -r $tmp/vendor/lib /vendor/
+setperm 0755 0644 /vendor/lib
+
+cp -r $tmp/vendor/lib64 /vendor/
+setperm 0755 0644 /vendor/lib64
+
+rm -rf /vendor/overlay
+cp -r $tmp/vendor/overlay /vendor/
+setperm 0755 0644 /vendor/overlay
+
+################################# THE END ###########################################
+
+exit 0

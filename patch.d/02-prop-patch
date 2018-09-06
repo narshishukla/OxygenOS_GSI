@@ -1,0 +1,62 @@
+#!/sbin/sh
+
+echo "Patching props"
+
+systempath=/system/etc/prop.default
+vendorpath=/vendor/build.prop/
+
+# Disable setupwizard
+echo "ro.setupwizard.mode=DISABLED" >> $systempath
+
+# ADB
+echo "sys.usb.ffs.aio_compat=1" >> $systempath
+
+# Disable PrivApp enforcing
+if ! grep -Fxq "ro.control_privapp_permissions=enforce" $vendorpath
+then
+    sed -i 'ro.control_privapp_permissions=enforce/d' $vendorpath
+fi
+
+# Pixel Theme
+if ! grep -Fxq "com.google.android.theme.pixel" $vendorpath
+then
+    echo "ro.boot.vendor.overlay.theme=com.google.android.theme.pixel" >> $vendorpath
+fi
+
+# Bluetooth
+if ! grep -Fxq "qcom.bluetooth.soc=rome" $vendorpath
+then
+    sed -i "s|qcom.bluetooth.soc=rome|vendor.qcom.bluetooth.soc=rome|g" $vendorpath
+fi
+
+# Enable GPU profiling (Enable only for devices that have graphical artifacts)
+if  ( getprop ro.vendor.product.device | grep -qiE '(rolex|riva)' );then
+    echo "debug.hwui.profile=true" >> $vendorpath
+fi
+
+# Disable Sdcardfs (Some devices have sdcardfs kernel panicing on 8.0+)
+if ! grep -Fxq "ro.sys.sdcardfs=0" $vendorpath
+then
+    echo "ro.sys.sdcardfs=0" >> $vendorpath
+fi
+
+exit 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

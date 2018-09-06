@@ -1,0 +1,82 @@
+Signature-Version: 1.0
+SHA1-Digest-Manifest: wqzkXGnGPH5nxQka0N5quQS8ft4=
+Created-By: 1.0 (Android SignApk)
+
+Name: tools/arm64/bootimg
+SHA1-Digest: iJKW624rF9a+KMlvapp3RxRgB6c=
+
+Name: tools/arm/lz4
+SHA1-Digest: 7pW+0fw0gjYZvHfykGnz3BOavyI=
+
+Name: tools/arm64/futility
+SHA1-Digest: uHUIBL6qnanBM58cqzHqAxoxJYQ=
+
+Name: patch.d-env
+SHA1-Digest: MX0qD91T/IxpuW0TdnhiYMhWgpc=
+
+Name: patch.d/01-no-force-encrypt
+SHA1-Digest: pmJOnT5hp/tM3/rhzWHoDsAMQGw=
+
+Name: tools/x86/futility
+SHA1-Digest: BvcClguCkbEnHfLFkdOZmXhkf4w=
+
+Name: tools/x86/bootimg
+SHA1-Digest: 6J39nXrBwp/QgqykLjP9Z2T6vl8=
+
+Name: config.sh
+SHA1-Digest: 1VLBLZ4Ej4KPY7pOPAMKZR5Elhs=
+
+Name: tools/x86/bzip2
+SHA1-Digest: H/r6fJ8UMdsbMz6eulHPz7R/XY4=
+
+Name: patch.d/02-no-dm-verity
+SHA1-Digest: 3O0H3ZeoYKcFkj/R1eLJtCclFRw=
+
+Name: tools/arm64/bzip2
+SHA1-Digest: UUjgWxrkRqVQRZbqmTHBy/9lQKI=
+
+Name: tools/arm/futility
+SHA1-Digest: /wmqk/MYmlEioG2i+i5/PigxIt0=
+
+Name: tools/x86_64/lz4
+SHA1-Digest: bhIfswIHSoTWo00qyu7O/ehuVYw=
+
+Name: tools/arm64/lz4
+SHA1-Digest: GKkBfcAdEl4CL/1bKX12EKtKmqE=
+
+Name: tools/x86_64/bzip2
+SHA1-Digest: 7aA3fzqKwbdo5Cf3mwda2I1/esI=
+
+Name: tools/x86_64/bootimg
+SHA1-Digest: VnWQYL7jFs6O3ulwJdHiKEMwhag=
+
+Name: LICENSE
+SHA1-Digest: PF6x3HyhN8ISSXdOC6BdtpP/ED8=
+
+Name: META-INF/com/android/otacert
+SHA1-Digest: QW7yPFUPbhU0tUYKW4i2EdneCnw=
+
+Name: META-INF/com/google/android/update-binary
+SHA1-Digest: GB/olFn8mOXZ2AaWp31RM7uPpt0=
+
+Name: chromeos/kernel.keyblock
+SHA1-Digest: obJ/Zq6Q4YjuLT9zMe2gVi0SVfQ=
+
+Name: boot-patcher.sh
+SHA1-Digest: Amw4U3Q5lo6pnuY9iYt1y3TMutE=
+
+Name: tools/arm/bootimg
+SHA1-Digest: H58KopBWMho4224ThSP5ecCL1zY=
+
+Name: tools/arm/bzip2
+SHA1-Digest: oGYsnCYFV9zgd+XWXF+VXx3VyiQ=
+
+Name: chromeos/kernel_data_key.vbprivk
+SHA1-Digest: 3QeXadLiF9HJzK0798JQDt+7buY=
+
+Name: tools/x86/lz4
+SHA1-Digest: 00vTBCJjeOFqnLJZa7dZfjKGFAY=
+
+Name: tools/x86_64/futility
+SHA1-Digest: 9mYLneN8m2SAGGRNoSGx+DdtuK0=
+

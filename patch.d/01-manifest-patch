@@ -1,0 +1,118 @@
+#!/sbin/sh
+
+print "Patching manifest..."
+
+manifest=/vendor/manifest.xml
+
+# OnePlus manifest patches
+
+# OnePlus Patches
+
+# Oneplus Camera HIDL
+if ! grep -fq "vendor.oneplus.camera.CameraHIDL" $manifest
+then
+    sed -i -e ':a' -e 'N' -e '$!ba' -e 's/<\/manifest>/    <hal format="hidl">\n        <name>vendor.oneplus.camera.CameraHIDL<\/name>\n        <transport>hwbinder<\/transport>\n        <version>1.0<\/version>\n        <interface>\n            <name>IOnePlusCameraProvider<\/name>\n            <instance>default<\/instance>\n        <\/interface>\n        <fqname>@1.0::IOnePlusCameraProvider\/default<\/fqname>\n    <\/hal>\n<\/manifest>/g' $manifest
+fi
+
+# Oneplus Faceunlock HAL
+if ! grep -fq "vendor.oneplus.faceunlock.hal" $manifest
+then
+    sed -i -e ':a' -e 'N' -e '$!ba' -e 's/<\/manifest>/    <hal format="hidl">\n        <name>vendor.oneplus.camera.CameraHIDL<\/name>\n        <transport>hwbinder<\/transport>\n        <version>1.0<\/version>\n        <interface>\n            <name>IFaceUnlockNativeService<\/name>\n            <instance>default<\/instance>\n        <\/interface>\n        <fqname>@1.0::IFaceUnlockNativeService\/default<\/fqname>\n    <\/hal>\n<\/manifest>/g' $manifest
+fi
+
+# Oneplus FP extension
+if ! grep -fq "vendor.oneplus.fingerprint.extension" $manifest
+then
+    sed -i -e ':a' -e 'N' -e '$!ba' -e 's/<\/manifest>/    <hal format="hidl">\n        <name>vendor.oneplus.fingerprint.extension<\/name>\n        <transport>hwbinder<\/transport>\n        <version>1.0<\/version>\n        <interface>\n            <name>IVendorFingerprintExtensions<\/name>\n            <instance>default<\/instance>\n        <\/interface>\n        <fqname>@1.0::IVendorFingerprintExtensions\/default<\/fqname>\n    <\/hal>\n<\/manifest>/g' $manifest
+fi
+
+# Oneplus Display HAL
+if ! grep -fq "vendor.oneplus.hardware.display" $manifest
+then
+    sed -i -e ':a' -e 'N' -e '$!ba' -e 's/<\/manifest>/    <hal format="hidl">\n        <name>vendor.oneplus.hardware.display<\/name>\n        <transport>hwbinder<\/transport>\n        <version>1.0<\/version>\n        <interface>\n            <name>IOneplusDisplay<\/name>\n            <instance>default<\/instance>\n        <\/interface>\n        <fqname>@1.0::IOneplusDisplay\/default<\/fqname>\n    <\/hal>\n<\/manifest>/g' $manifest
+fi
+
+# Oneplus DRM_key 
+if ! grep -fq "vendor.oneplus.hardware.drmkey" $manifest
+then
+    sed -i -e ':a' -e 'N' -e '$!ba' -e 's/<\/manifest>/    <hal format="hidl">\n        <name>vendor.oneplus.hardware.drmkey<\/name>\n        <transport>hwbinder<\/transport>\n        <version>1.0<\/version>\n        <interface>\n            <name>IOneplusDrmKey<\/name>\n            <instance>default<\/instance>\n        <\/interface>\n        <fqname>@1.0::IOneplusDrmKey\/default<\/fqname>\n    <\/hal>\n<\/manifest>/g' $manifest
+fi
+
+# Oneplus hdcp_key
+if ! grep -fq "vendor.oneplus.hardware.hdcpkey" $manifest
+then
+    sed -i -e ':a' -e 'N' -e '$!ba' -e 's/<\/manifest>/    <hal format="hidl">\n        <name>vendor.oneplus.hardware.hdcpkey<\/name>\n        <transport>hwbinder<\/transport>\n        <version>1.0<\/version>\n        <interface>\n            <name>IOneplusHdcpKey<\/name>\n            <instance>default<\/instance>\n        <\/interface>\n        <fqname>@1.0::IOneplusHdcpKey\/default<\/fqname>\n    <\/hal>\n<\/manifest>/g' $manifest
+fi
+
+# Oneplus ifaa HAL
+if ! grep -fq "vendor.oneplus.hardware.ifaa" $manifest
+then
+    sed -i -e ':a' -e 'N' -e '$!ba' -e 's/<\/manifest>/    <hal format="hidl">\n        <name>vendor.oneplus.hardware.ifaa<\/name>\n        <transport>hwbinder<\/transport>\n        <version>2.0<\/version>\n        <interface>\n            <name>IOneplusIfaa<\/name>\n            <instance>default<\/instance>\n        <\/interface>\n        <fqname>@2.0::IOneplusIfaa\/default<\/fqname>\n    <\/hal>\n<\/manifest>/g' $manifest
+fi
+
+# Oneplus Param
+if ! grep -fq "vendor.oneplus.hardware.param" $manifest
+then
+    sed -i -e ':a' -e 'N' -e '$!ba' -e 's/<\/manifest>/    <hal format="hidl">\n        <name>vendor.oneplus.hardware.param<\/name>\n        <transport>hwbinder<\/transport>\n        <version>1.0<\/version>\n        <interface>\n            <name>IOneplusParam<\/name>\n            <instance>default<\/instance>\n        <\/interface>\n        <fqname>@1.0::IOneplusParam\/default<\/fqname>\n    <\/hal>\n<\/manifest>/g' $manifest
+fi
+
+# Oneplus Rpmb
+if ! grep -fq "vendor.oneplus.hardware.rpmb" $manifest
+then
+    sed -i -e ':a' -e 'N' -e '$!ba' -e 's/<\/manifest>/    <hal format="hidl">\n        <name>vendor.oneplus.hardware.rpmb<\/name>\n        <transport>hwbinder<\/transport>\n        <version>1.0<\/version>\n        <interface>\n            <name>IOneplusRpmb<\/name>\n            <instance>default<\/instance>\n        <\/interface>\n        <fqname>@1.0::IOneplusRpmb\/default<\/fqname>\n    <\/hal>\n<\/manifest>/g' $manifest
+fi
+
+# Oneplus Wifi HAL
+if ! grep -fq "vendor.oneplus.hardware.wifi" $manifest
+then
+    sed -i -e ':a' -e 'N' -e '$!ba' -e 's/<\/manifest>/    <hal format="hidl">\n        <name>vendor.oneplus.hardware.wifi<\/name>\n        <transport>hwbinder<\/transport>\n        <version>1.1<\/version>\n        <interface>\n            <name>IOneplusWifi<\/name>\n            <instance>default<\/instance>\n        <\/interface>\n        <fqname>@1.1::IOneplusWifi\/default<\/fqname>\n    <\/hal>\n<\/manifest>/g' $manifest
+fi
+
+# Manifest changes
+
+# Audio
+# Soundtrigger
+if ! grep -fq "android.hardware.soundtrigger" $manifest
+then
+    sed -i -e '/<name>android.hardware.soundtrigger<\/name>/ {' -e 'n;n; s/<version>2.0<\/version>/<version>2.1<\/version>/' -e '}' $manifest
+fi
+
+# Display
+# Configstore
+if ! grep -fq "android.hardware.configstore" $manifest
+then
+    sed -i -e '/<name>android.hardware.configstore<\/name>/ {' -e 'n;n; s/<version>1.0<\/version>/<version>1.1<\/version>/' -e '}' $manifest
+fi
+
+# Radio
+# IMS
+if ! grep -fq "vendor.qti.hardware.radio.ims" $manifest
+then
+    sed -i -e '/<name>vendor.qti.hardware.radio.ims<\/name>/ {' -e 'n;n; s/<version>1.0<\/version>/<version>1.1<\/version>/' -e '}' $manifest
+fi
+
+# Oneplus Wifi HAL
+if ! grep -fq "vendor.qti.ims.callinfo" $manifest
+then
+    sed -i -e ':a' -e 'N' -e '$!ba' -e 's/<\/manifest>/    <hal format="hidl">\n        <name>vendor.qti.ims.callinfo<\/name>\n        <transport>hwbinder<\/transport>\n        <version>1.0<\/version>\n        <interface>\n            <name>IService<\/name>\n            <instance>default<\/instance>\n        <\/interface>\n        <fqname>@1.0::IService\/default<\/fqname>\n    <\/hal>\n<\/manifest>/g' $manifest
+fi
+
+# WIFI
+if ! grep -fq "android.hardware.wifi" $manifest
+then
+    sed -i -e '/<name>android.hardware.wifi<\/name>/ {' -e 'n;n; s/<version>1.1<\/version>/<version>1.2<\/version>/' -e '}' $manifest
+fi
+# WIFI supplicant
+if ! grep -fq "android.hardware.wifi.supplicant" $manifest
+then
+    sed -i -e '/<name>android.hardware.wifi.supplicant<\/name>/ {' -e 'n;n; s/<version>1.0<\/version>/<version>1.1<\/version>/' -e '}' $manifest
+fi
+# Hostapd
+if ! grep -Fq "android.hardware.wifi.hostapd" $manifest
+then
+    sed -i -e ':a' -e 'N' -e '$!ba' -e 's/<\/manifest>/    <hal format="hidl">\n        <name>android.hardware.wifi.hostapd<\/name>\n        <transport>hwbinder<\/transport>\n        <version>1.0<\/version>\n        <interface>\n            <name>IHostapd<\/name>\n            <instance>default<\/instance>\n        <\/interface>\n        <fqname>@1.0::IHostapd\/default<\/fqname>\n    <\/hal>\n<\/manifest>/g' $manifest
+fi
+
+print "Done Patching manifest.."
+
+exit 0
