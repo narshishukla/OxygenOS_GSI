@@ -36,6 +36,13 @@ then
     sed -i "s/libkeystore_binder.so/libWkeystorebinder.so/" $fphal
 fi
 
+# Speed up fp enroll
+biometrics_rc= /vendor/etc/init/android.hardware.biometrics.fingerprint@2.1-service*
+if grep -Fxq "writepid /dev/cpuset/system-background/tasks" $biometrics_rc
+then
+    sed -i '/writepid /dev/cpuset/system-background/tasks/d'$biometrics_rc
+fi
+
 # LG RIL
 if [ -e "/vendor/lib64/vendor.lge.hardware.radio@1.0.so" ]; then
     sed -i "s/android.hardware.radio@1.0.so/Wndroid.hardware.radio@1.0.so/" /vendor/lib/vendor.lge.hardware.radio@1.0.so
